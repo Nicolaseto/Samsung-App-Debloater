@@ -69,7 +69,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           $asset = "Samsung-App-Debloater-2.0-Windows.zip"
-          gh release view v2.0.0 --repo "${{ github.repository }}" 2>$null
+          $null = cmd /c "gh release view v2.0.0 --repo ${{ github.repository }} >nul 2>nul"
           if ($LASTEXITCODE -eq 0) {
             gh release upload v2.0.0 $asset --clobber --repo "${{ github.repository }}"
           } else {
