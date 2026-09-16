@@ -1,0 +1,38 @@
+# Device data (private)
+backups/
+logs/
+evidence/
+test-artifacts/
+pacotes*.txt
+classificacao*.csv
+analise-resultado.txt
+*test-result*.txt
+interface-preview.png
+limpeza-preview.png
+# Third-party runtime and build outputs
+platform-tools/
+*.exe
+*.dll
+*.pdb
+*.zip
+bin/
+obj/
+dist/
+github-ready*/
+Samsung-App-Debloater/
+release-check*/
+# Local configuration and keys
+.env
+.env.*
+*.key
+*.pem
+.vs/
+.idea/
+.codex/
+.agents/
+docs/MANUAL-LOCAL.md
+*.user
+*.suo
+Thumbs.db
+Desktop.ini
+Samsung-App-Debloater-*-source/
