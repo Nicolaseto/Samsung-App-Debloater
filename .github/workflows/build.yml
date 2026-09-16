@@ -1,15 +1,77 @@
-name: Windows build and tests
-on: [push, pull_request, workflow_dispatch]
+name: Windows build, tests and release
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
 permissions:
-  contents: read
+  contents: write
+
 jobs:
-  test:
+  test-and-release:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Compile
         shell: powershell
         run: .\build.ps1
+
       - name: Test with simulated ADB
         shell: powershell
         run: .\test.ps1 -NoUI
+
+      - name: Create portable Windows package
+        if: github.event_name != 'pull_request'
+        shell: powershell
+        run: |
+          $package = "Samsung-App-Debloater-2.0-Windows"
+          New-Item -ItemType Directory -Force -Path $package | Out-Null
+          Copy-Item "Samsung-App-Debloater.exe" "$package\Samsung-App-Debloater.exe"
+          Copy-Item "LICENSE" "$package\LICENSE.txt"
+
+          @"
+          SAMSUNG APP DEBLOATER 2.0
+
+          1. Extraia todo o conteúdo deste ZIP.
+          2. No celular, ative as Opções do desenvolvedor e a Depuração USB.
+          3. Conecte o celular Samsung ao computador e aceite a autorização RSA.
+          4. Abra Samsung-App-Debloater.exe.
+          5. Clique em Analisar celular e revise todas as ações antes de confirmar.
+
+          Não execute o programa diretamente de dentro do ZIP.
+          Não é necessário instalar ADB separadamente: o Platform Tools oficial já está incluído.
+          O programa não exige root e não garante aumento de FPS.
+
+          Documentação completa:
+          https://github.com/Nicolaseto/Samsung-App-Debloater
+          "@ | Set-Content "$package\LEIA-ME.txt" -Encoding UTF8
+
+          Invoke-WebRequest "https://dl.google.com/android/repository/platform-tools-latest-windows.zip" -OutFile "platform-tools.zip"
+          Expand-Archive "platform-tools.zip" -DestinationPath "adb-download"
+          Copy-Item "adb-download\platform-tools" "$package\platform-tools" -Recurse
+          Compress-Archive -Path $package -DestinationPath "$package.zip" -Force
+
+      - name: Upload portable package as workflow artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Samsung-App-Debloater-2.0-Windows
+          path: Samsung-App-Debloater-2.0-Windows.zip
+          if-no-files-found: error
+
+      - name: Publish version v2.0.0
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: powershell
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $asset = "Samsung-App-Debloater-2.0-Windows.zip"
+          gh release view v2.0.0 --repo "${{ github.repository }}" 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            gh release upload v2.0.0 $asset --clobber --repo "${{ github.repository }}"
+          } else {
+            gh release create v2.0.0 $asset --repo "${{ github.repository }}" --target main --title "Samsung App Debloater 2.0" --notes "Primeira versão pública. Baixe o arquivo Samsung-App-Debloater-2.0-Windows.zip, extraia todo o conteúdo e abra Samsung-App-Debloater.exe. O pacote já inclui o Android Platform Tools oficial; não é necessário instalar o ADB separadamente."
+          }
