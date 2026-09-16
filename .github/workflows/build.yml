@@ -1,0 +1,15 @@
+name: Windows build and tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile
+        shell: powershell
+        run: .\build.ps1
+      - name: Test with simulated ADB
+        shell: powershell
+        run: .\test.ps1 -NoUI
