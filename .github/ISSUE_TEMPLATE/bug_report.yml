@@ -1,0 +1,86 @@
+name: Relatar um problema
+description: Informe um erro no aplicativo ou no pacote para Windows.
+title: '[Bug]: '
+body:
+- type: markdown
+  attributes:
+    value: Não envie seriais, contas, tokens, dumps, backups ou logs completos. Para testes sem aparelho, informe
+      “Demonstração / sem celular” nos campos do dispositivo.
+- type: input
+  id: version
+  attributes:
+    label: Versão do aplicativo
+    placeholder: 'Ex.: 2.0 — ZIP da release ou compilação própria'
+  validations:
+    required: true
+- type: input
+  id: windows
+  attributes:
+    label: Versão do Windows
+    placeholder: 'Ex.: Windows 11 64 bits'
+  validations:
+    required: true
+- type: input
+  id: device
+  attributes:
+    label: Modelo do celular
+    placeholder: 'Ex.: Galaxy S20 FE ou Demonstração / sem celular. Não informe o serial.'
+  validations:
+    required: true
+- type: input
+  id: android
+  attributes:
+    label: Android e One UI
+    placeholder: 'Ex.: Android 13 / One UI 5.1; sem aparelho, informe Não se aplica.'
+  validations:
+    required: true
+- type: dropdown
+  id: stage
+  attributes:
+    label: Onde aconteceu?
+    options:
+    - Download ou abertura do programa
+    - Demonstração ou inventário salvo
+    - Conexão USB ou análise
+    - Perfis ou classificação de pacotes
+    - Otimização ou limpeza opcional
+    - Restauração
+    - Outro
+  validations:
+    required: true
+- type: textarea
+  id: steps
+  attributes:
+    label: Como reproduzir
+    description: Descreva os cliques, o perfil escolhido e quando o problema aparece.
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Resultado esperado
+    description: O que deveria acontecer?
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: O que aconteceu
+    description: Inclua a mensagem de erro, removendo dados pessoais.
+  validations:
+    required: true
+- type: textarea
+  id: evidence
+  attributes:
+    label: Capturas ou informações adicionais
+    description: Opcional. Envie apenas capturas e trechos revisados, sem identificadores do aparelho ou dados pessoais.
+  validations:
+    required: false
+- type: checkboxes
+  id: privacy
+  attributes:
+    label: Revisão de privacidade
+    options:
+    - label: Revisei o relato e os anexos para não incluir dados pessoais, seriais, contas, tokens, dumps, backups
+        ou logs completos.
+      required: true

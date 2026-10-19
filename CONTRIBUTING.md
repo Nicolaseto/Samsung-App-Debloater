@@ -1,5 +1,9 @@
 # Contribuir
 
+Para relatar erros ou propor melhorias, abra [uma nova issue](https://github.com/Nicolaseto/Samsung-App-Debloater/issues/new/choose) e escolha o formulário correspondente.
+O formulário de problemas pede versão do aplicativo, Windows, modelo/Android e passos para reproduzir.
+Na demonstração sem celular, indique isso nos campos do dispositivo.
+
 Use Windows e execute `powershell -ExecutionPolicy Bypass -File .\build.ps1`.
 Execute `powershell -ExecutionPolicy Bypass -File .\test.ps1` para testes com
 ADB em memória, sem acesso a um aparelho. `-NoUI` desativa a renderização da interface.

@@ -1,0 +1,33 @@
+name: Sugerir uma melhoria
+description: Proponha uma função ou melhoria na experiência de uso.
+title: '[Sugestão]: '
+body:
+- type: textarea
+  id: problem
+  attributes:
+    label: Qual problema você quer resolver?
+    description: Conte em qual situação essa melhoria ajudaria.
+  validations:
+    required: true
+- type: textarea
+  id: proposal
+  attributes:
+    label: Como a melhoria poderia funcionar?
+    description: Descreva o comportamento desejado.
+  validations:
+    required: true
+- type: textarea
+  id: alternatives
+  attributes:
+    label: Alternativas consideradas
+    description: Opcional. Como você resolve isso hoje?
+  validations:
+    required: false
+- type: textarea
+  id: context
+  attributes:
+    label: Contexto ou exemplo
+    description: Opcional. Para sugestões específicas, informe modelo e Android. Use dados fictícios; não envie
+      seriais, contas, tokens, dumps, backups ou logs completos.
+  validations:
+    required: false
