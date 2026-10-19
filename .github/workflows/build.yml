@@ -35,17 +35,17 @@ jobs:
           @"
           SAMSUNG APP DEBLOATER 2.0
 
-          1. Extraia todo o conteúdo deste ZIP.
-          2. No celular, ative as Opções do desenvolvedor e a Depuração USB.
-          3. Conecte o celular Samsung ao computador e aceite a autorização RSA.
+          1. Extraia todo o conte`u{fa}do deste ZIP.
+          2. No celular, ative as Op`u{e7}`u{f5}es do desenvolvedor e a Depura`u{e7}`u{e3}o USB.
+          3. Conecte o celular Samsung ao computador e aceite a autoriza`u{e7}`u{e3}o RSA.
           4. Abra Samsung-App-Debloater.exe.
-          5. Clique em Analisar celular e revise todas as ações antes de confirmar.
+          5. Clique em Analisar celular e revise todas as a`u{e7}`u{f5}es antes de confirmar.
 
-          Não execute o programa diretamente de dentro do ZIP.
-          Não é necessário instalar ADB separadamente: o Platform Tools oficial já está incluído.
-          O programa não exige root e não garante aumento de FPS.
+          N`u{e3}o execute o programa diretamente de dentro do ZIP.
+          N`u{e3}o `u{e9} necess`u{e1}rio instalar ADB separadamente: o Platform Tools oficial j`u{e1} est`u{e1} inclu`u{ed}do.
+          O programa n`u{e3}o exige root e n`u{e3}o garante aumento de FPS.
 
-          Documentação completa:
+          Documenta`u{e7}`u{e3}o completa:
           https://github.com/Nicolaseto/Samsung-App-Debloater
           "@ | Set-Content "$package\LEIA-ME.txt" -Encoding UTF8
 
