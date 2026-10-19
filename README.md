@@ -3,6 +3,20 @@
 Aplicativo Windows em português para analisar e gerenciar aplicativos do usuário 0
 em celulares Samsung com Android 12 a 17, via ADB e USB, sem root.
 
+## Imagens do aplicativo
+
+### Interface principal
+
+Prévia offline com inventário salvo do S20 FE, perfil Gaming Seguro, filtros e classificação dos pacotes. A execução permanece bloqueada até validar a conexão com o aparelho.
+
+![Interface principal do Samsung App Debloater com inventário salvo do S20 FE](docs/images/interface-preview.png)
+
+### Limpeza opcional
+
+Seleção de aplicativos não protegidos, com ação permitida e nível de risco. Nenhum aplicativo vem marcado; as ações são revisadas antes da confirmação.
+
+![Tela de limpeza opcional com aplicativos, ações permitidas e níveis de risco](docs/images/limpeza-preview.png)
+
 ## Compatibilidade prevista na versão 2.0
 
 Identifica fabricante, modelo, Android, API e codename pelo ADB. Aceita Samsung
