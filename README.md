@@ -3,6 +3,30 @@
 Aplicativo Windows em português para analisar e gerenciar aplicativos do usuário 0
 em celulares Samsung com Android 12 a 17, via ADB e USB, sem root.
 
+[![Versão](https://img.shields.io/github/v/release/Nicolaseto/Samsung-App-Debloater?label=vers%C3%A3o)](https://github.com/Nicolaseto/Samsung-App-Debloater/releases/latest)
+[![Compilação e testes](https://github.com/Nicolaseto/Samsung-App-Debloater/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Nicolaseto/Samsung-App-Debloater/actions/workflows/build.yml)
+[![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-blue.svg)](LICENSE)
+
+## Baixar para Windows
+
+**[Baixar Samsung App Debloater 2.0 para Windows (ZIP)](https://github.com/Nicolaseto/Samsung-App-Debloater/releases/download/v2.0.0/Samsung-App-Debloater-2.0-Windows.zip)**
+
+Pacote portátil com executável e Android Platform Tools oficial (ADB) incluído.
+Não é necessário compilar nem instalar o ADB separadamente ao usar esse pacote.
+Requer .NET Framework 4.5 ou superior; o Windows 10/11 normalmente já possui .NET Framework 4.x.
+
+[Ver todas as versões](https://github.com/Nicolaseto/Samsung-App-Debloater/releases) · [Como usar](#usar) · [Perguntas frequentes](#perguntas-frequentes) · [Histórico](#histórico-de-versões)
+
+## Começar em poucos passos
+
+1. Baixe o ZIP acima e **extraia todo o conteúdo** para uma pasta. Preserve a pasta `platform-tools` ao lado do executável.
+2. Abra `Samsung-App-Debloater.exe` pela pasta extraída, fora do ZIP.
+3. Para experimentar sem celular, clique em **Ver inventário salvo**. Em uma instalação limpa, a demonstração usa dados fictícios; a prévia offline não permite executar alterações.
+4. Para usar no celular, habilite **Depuração USB**, conecte exatamente um aparelho Samsung por USB e aceite a autorização RSA exibida nele.
+5. Clique em **Analisar celular**, escolha um perfil e revise as ações. A análise e a escolha do perfil não aplicam alterações; **Otimizar** exige confirmação.
+
+Veja o [passo a passo completo](#usar) para limpeza opcional e restauração.
+
 ## Imagens do aplicativo
 
 ### Interface principal
@@ -136,6 +160,63 @@ O projeto não envia telemetria nem publica dados automaticamente.
 
 Use `export-source.ps1` para criar uma cópia com uma lista explícita de arquivos públicos.
 O script não apaga pastas existentes. Consulte [como publicar no GitHub](docs/PUBLICAR.md).
+
+## Perguntas frequentes
+
+### Precisa de root?
+
+Não. O aplicativo usa ADB via USB para gerenciar os aplicativos do usuário 0.
+
+### Preciso instalar o ADB ou compilar o programa?
+
+O ZIP disponível em **Baixar para Windows** já inclui o executável e o ADB.
+Quem optar pelo código-fonte deve seguir [Compilar no Windows](#compilar-no-windows) e baixar o Platform Tools separadamente.
+
+### Posso experimentar sem conectar um celular?
+
+Sim. Use **Ver inventário salvo**. Sem inventário anterior, aparece uma demonstração identificada com dados fictícios.
+Se houver inventário salvo, ele pode ser consultado offline. Alterações ficam bloqueadas até validar a conexão com o aparelho.
+
+### Posso restaurar os aplicativos?
+
+Use **Restaurar** e selecione o snapshot da operação. A restauração depende de o pacote continuar no firmware e das validações do aparelho.
+Snapshots não guardam APKs nem dados pessoais. Veja [Snapshots e limitações](#snapshots-e-limitações).
+
+### Remover aplicativos libera espaço ou aumenta o FPS?
+
+Não há garantia de aumento de FPS. A remoção de um aplicativo de fábrica para o usuário 0 mantém o APK no sistema;
+não há promessa de recuperar o espaço ocupado por esse APK.
+
+### Funciona em qualquer Samsung?
+
+A compatibilidade prevista abrange Android 12 a 17, mas não representa teste físico em todos os modelos e firmwares.
+O inventário real inicial veio de um S20 FE com Android 13; as demais versões usam testes com ADB simulado.
+Consulte [Compatibilidade prevista](#compatibilidade-prevista-na-versão-20).
+
+### Analisar celular já remove alguma coisa?
+
+Não. A análise apenas consulta e salva dados localmente. Selecionar um perfil também não executa comandos de alteração.
+Revise as propostas e a confirmação antes de executar.
+
+## Histórico de versões
+
+### 2.0 — primeira versão pública
+
+Resumo dos recursos documentados na versão publicada:
+
+- Perfis Gaming Seguro, Samsung Gaming Extremo e Personalizado, com classificação de risco e proteções de pacotes.
+- Limpeza opcional com seleção manual e revisão antes da confirmação.
+- Snapshots de operações, logs e restauração individual ou em lote.
+- Demonstração com inventário fictício e consulta de inventário salvo offline.
+- Compilação e testes com ADB simulado no GitHub Actions.
+- Pacote portátil para Windows com o Android Platform Tools incluído.
+
+[Download e notas da versão 2.0](https://github.com/Nicolaseto/Samsung-App-Debloater/releases/tag/v2.0.0).
+
+### Atualizações da documentação — 19/10/2026
+
+- Capturas da interface principal e da limpeza opcional.
+- Download em destaque, guia rápido, indicadores de versão, testes e licença, além de perguntas frequentes.
 
 ## Código e contribuição
 
